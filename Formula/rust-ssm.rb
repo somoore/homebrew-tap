@@ -8,19 +8,17 @@ class RustSsm < Formula
   homepage "https://github.com/somoore/rust-ssm"
   # Using git URL until tarball is available - will switch to tarball URL once GitHub generates it
   url "https://github.com/somoore/rust-ssm.git", tag: "v0.1.0"
-  version "0.1.0"
   license "MIT"
 
   depends_on "rust" => :build
 
   def install
-    system "cargo", "build", "--release", "--bin", "ssm"
-    bin.install "target/release/ssm" => "ssm"
+    system "cargo", "install", *std_cargo_args, "--bin", "ssm"
   end
 
   test do
     # Test that the binary exists and is executable
-    assert_predicate bin/"ssm", :exist?
+    assert_path_exists bin/"ssm"
     # If your binary supports --version or --help, uncomment:
     # system "#{bin}/ssm", "--version"
   end
