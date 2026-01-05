@@ -6,8 +6,8 @@
 class RustSsm < Formula
   desc "AWS SSM parameter retrieval tool"
   homepage "https://github.com/somoore/rust-ssm"
-  url "https://github.com/somoore/rust-ssm/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+  # Using git URL until tarball is available - will switch to tarball URL once GitHub generates it
+  url "https://github.com/somoore/rust-ssm.git", tag: "v0.1.0"
   version "0.1.0"
   license "MIT"
 
