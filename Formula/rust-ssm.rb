@@ -1,27 +1,20 @@
 # typed: false
 # frozen_string_literal: true
 
-# This file was generated from your local formula. Once you push to GitHub,
-# update the url and other fields as needed.
 class RustSsm < Formula
   desc "AWS SSM parameter retrieval tool"
   homepage "https://github.com/somoore/rust-ssm"
-  # Using git URL until tarball is available - will switch to tarball URL once GitHub generates it
-  url "https://github.com/somoore/rust-ssm.git", tag: "v0.1.0"
+  url "https://github.com/somoore/rust-ssm.git", tag: "v0.1.1"
   license "MIT"
 
   depends_on "rust" => :build
 
   def install
-    system "cargo", "install", *std_cargo_args, "--bin", "ssm"
-    # Rename binary from ssm to rust-ssm to avoid conflicts with AWS SSM tools
-    mv bin/"ssm", bin/"rust-ssm"
+    system "cargo", "install", *std_cargo_args
   end
 
   test do
-    # Test that the binary exists and is executable
     assert_path_exists bin/"rust-ssm"
-    # If your binary supports --version or --help, uncomment:
-    # system "#{bin}/rust-ssm", "--version"
+    assert_match "rust-ssm", shell_output("#{bin}/rust-ssm --version")
   end
 end
