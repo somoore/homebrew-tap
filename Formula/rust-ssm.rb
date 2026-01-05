@@ -14,12 +14,14 @@ class RustSsm < Formula
 
   def install
     system "cargo", "install", *std_cargo_args, "--bin", "ssm"
+    # Rename binary from ssm to rust-ssm to avoid conflicts with AWS SSM tools
+    mv bin/"ssm", bin/"rust-ssm"
   end
 
   test do
     # Test that the binary exists and is executable
-    assert_path_exists bin/"ssm"
+    assert_path_exists bin/"rust-ssm"
     # If your binary supports --version or --help, uncomment:
-    # system "#{bin}/ssm", "--version"
+    # system "#{bin}/rust-ssm", "--version"
   end
 end
